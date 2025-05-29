@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BMI Calculator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #e6f2ff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .bmi-box {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      text-align: center;
+      max-width: 350px;
+      width: 100%;
+    }
+    input, button {
+      margin: 10px 0;
+      padding: 10px;
+      width: 100%;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    .result {
+      margin-top: 20px;
+      font-size: 1.2em;
+      color: #004d00;
+    }
+  </style>
+</head>
+<body>
+  <div class="bmi-box">
+    <h2>BMI Calculator</h2>
+    <input type="number" id="weight" placeholder="Weight (kg)" step="0.1" />
+    <input type="number" id="height" placeholder="Height (cm)" step="0.1" />
+    <button onclick="calculateBMI()">Calculate BMI</button>
+    <div class="result" id="bmiResult"></div>
+  </div>
+
+  <script>
+    function calculateBMI() {
+      const weight = parseFloat(document.getElementById("weight").value);
+      const heightCm = parseFloat(document.getElementById("height").value);
+
+      if (isNaN(weight) || isNaN(heightCm) || weight <= 0 || heightCm <= 0) {
+        document.getElementById("bmiResult").innerText = "Please enter valid weight and height.";
+        return;
+      }
+
+      const heightM = heightCm / 100;
+      const bmi = (weight / (heightM * heightM)).toFixed(2);
+      let category = "";
+
+      if (bmi < 18.5) {
+        category = "Underweight";
+      } else if (bmi >= 18.5 && bmi < 24.9) {
+        category = "Normal weight";
+      } else if (bmi >= 25 && bmi < 29.9) {
+        category = "Overweight";
+      } else {
+        category = "Obese";
+      }
+
+      document.getElementById("bmiResult").innerText = Your BMI is ${bmi} (${category});
+    }
+  </script>
+</body>
+</html>`
