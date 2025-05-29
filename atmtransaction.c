@@ -1,6 +1,11 @@
 #include <stdio.h>
-
+void atm{
+	int ammount;
+	int account number;
+}
 int main() {
+	atm a;
+
     int choice;
     float balance = 10000.0; // Starting balance
     float amount;
