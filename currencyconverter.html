@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>INR Currency Converter</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f8ff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .converter {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      text-align: center;
+      max-width: 300px;
+    }
+    input, select, button {
+      margin: 10px 0;
+      padding: 10px;
+      width: 100%;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    .result {
+      margin-top: 20px;
+      font-size: 1.2em;
+      color: #006400;
+    }
+  </style>
+</head>
+<body>
+  <div class="converter">
+    <h2>INR Currency Converter</h2>
+    <input type="number" id="inrAmount" placeholder="Enter amount in INR" />
+    <select id="currency">
+      <option value="USD">USD - US Dollar</option>
+      <option value="EUR">EUR - Euro</option>
+      <option value="GBP">GBP - British Pound</option>
+      <option value="JPY">JPY - Japanese Yen</option>
+    </select>
+    <button onclick="convertCurrency()">Convert</button>
+    <div class="result" id="result"></div>
+  </div>
+
+  <script>
+    function convertCurrency() {
+      const inr = parseFloat(document.getElementById("inrAmount").value);
+      const currency = document.getElementById("currency").value;
+      let convertedAmount;
+      let rate;
+
+      // Static exchange rates (example)
+      const rates = {
+        USD: 0.012,   // 1 INR = 0.012 USD
+        EUR: 0.011,   // 1 INR = 0.011 EUR
+        GBP: 0.0095,  // 1 INR = 0.0095 GBP
+        JPY: 1.7      // 1 INR = 1.7 JPY
+      };
+
+      if (isNaN(inr) || inr <= 0) {
+        document.getElementById("result").innerText = "Please enter a valid amount.";
+        return;
+      }
+
+      rate = rates[currency];
+      convertedAmount = (inr * rate).toFixed(2);
+
+      document.getElementById("result").innerText =
+        ${inr} INR = ${convertedAmount} ${currency};
+    }
+  </script>
+</body>
+</html>
