@@ -44,6 +44,7 @@
       <option value="EUR">EUR - Euro</option>
       <option value="GBP">GBP - British Pound</option>
       <option value="JPY">JPY - Japanese Yen</option>
+      <option value="VND">VND - vietnamese dong</option>
     </select>
     <button onclick="convertCurrency()">Convert</button>
     <div class="result" id="result"></div>
@@ -62,8 +63,7 @@
         EUR: 0.011,   // 1 INR = 0.011 EUR
         GBP: 0.0095,  // 1 INR = 0.0095 GBP
         JPY: 1.7      // 1 INR = 1.7 JPY
-      };
-
+	VND:290.0};      
       if (isNaN(inr) || inr <= 0) {
         document.getElementById("result").innerText = "Please enter a valid amount.";
         return;
